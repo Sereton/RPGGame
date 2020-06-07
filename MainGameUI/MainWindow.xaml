@@ -46,10 +46,10 @@
             <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}"/>
             <Label Grid.Row="5" Grid.Column="0" Content="Level:"/>
             <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Level}"/>
-            <Button Grid.Row="6" Grid.Column="1" Content="Add Xp" Click="ButtonBase_OnClick"  ></Button>
+           
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1" Background="Beige" >
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="Beige" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -83,7 +83,8 @@
 
                     <TextBlock Grid.Row="2"
                                HorizontalAlignment="Center"
-                               Text="{Binding CurrentLocation.Description}"/>
+                               Text="{Binding CurrentLocation.Description}" 
+                               TextWrapping="Wrap"/>
                 </Grid>
 
             </Border>
