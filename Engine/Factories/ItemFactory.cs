@@ -1,0 +1,30 @@
+﻿using Engine.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Engine.Factories
+{
+    public static class ItemFactory
+    {
+        private static List<GameItem> _standardGameItems;
+
+        static ItemFactory()
+        {
+            _standardGameItems = new List<GameItem>();
+
+            _standardGameItems.Add(new Weapon(1001, "Palito Mantequillero", 1, 1, 10));
+            _standardGameItems.Add(new Weapon(1002, "Espada de Laugurio", 5, 5, 50));
+        }
+
+        public static GameItem CreateGameItem(int itemTypeId)
+        {
+            GameItem standardItem = _standardGameItems.FirstOrDefault(item => item.ItemTypeId == itemTypeId);
+
+            return standardItem?.Clone();
+
+        }
+    }
+}
