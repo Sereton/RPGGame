@@ -17,6 +17,7 @@ namespace Engine.Factories
 
             _standardGameItems.Add(new Weapon(1001, "Palito Mantequillero", 1, 1, 10));
             _standardGameItems.Add(new Weapon(1002, "Espada de Laugurio", 5, 5, 50));
+            _standardGameItems.Add(new Weapon(1003, "Sanguchito", 5, 5, 50));
         }
 
         public static GameItem CreateGameItem(int itemTypeId)
