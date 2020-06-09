@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Factories;
@@ -14,6 +15,7 @@ namespace Engine.ViewModels
     {
 
         private Location _currentLocation;
+        private Monster _currentMonster;
         public Player CurrentPlayer { get; set; }
         public Location CurrentLocation
         {
@@ -28,11 +30,24 @@ namespace Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToEast));
                 OnPropertyChanged(nameof(HasLocationToWest));
                 GivePlayerQuestsAtLocation();
+                GetMonsterAtLocation();
             }
         }
 
         public World CurrentWorld { get; set; }
 
+        public Monster CurrentMonster
+        {
+            get { return _currentMonster; }
+            set
+            {
+                _currentMonster = value;
+                OnPropertyChanged(nameof(CurrentMonster));
+                OnPropertyChanged(nameof(HasMonster));
+            }
+        }
+
+        public bool HasMonster => CurrentMonster != null;
         public bool HasLocationToNorth
         {
             get
@@ -135,7 +150,10 @@ namespace Engine.ViewModels
         }
 
 
-
+        private void GetMonsterAtLocation()
+        {
+            CurrentMonster = CurrentLocation.GetMonster();
+        }
 
     }
 }
